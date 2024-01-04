@@ -7,6 +7,10 @@ services:
         container_name: vw_server
         volumes:
             - v_vaultwarden:/data/
+        env_file:
+            - .env
+        depends_on:
+            - database
         image: docker.io/vaultwarden/server:latest
         
     nginx:
@@ -22,6 +26,16 @@ services:
         depends_on:
             - vaultwarden
         image: docker.io/library/nginx
+
+    database:
+        networks:
+            - n_vaultwarden
+        env_file:
+            - .env
+        container_name: vw_database
+        volumes:
+            - mariadb_vol:/var/lib/mysql
+        image: docker.io/library/mariadb:lts
 
 networks:
   n_vaultwarden:
