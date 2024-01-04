@@ -1,0 +1,27 @@
+---
+services:
+    server:
+        networks:
+            - n_vaultwarden
+        container_name: vaultwarden
+        volumes:
+            - ./vw-data/:/data/
+        ports:
+            - 8000:80
+        image: docker.io/vaultwarden/server:latest
+    nginx:
+        networks:
+            - n_vaultwarden
+        container_name: nginx_proxy
+        ports:
+            - 4430:443
+        volumes:
+            - ./nginx-conf:/etc/nginx/conf.d
+            - ./certs/cert.pem:/etc/nginx/cert.pem
+            - ./certs/key.pem:/etc/nginx/key.pem
+        image: docker.io/library/nginx
+networks:
+    n_vaultwarden:
+        external:
+            name: n_vaultwarden
+
