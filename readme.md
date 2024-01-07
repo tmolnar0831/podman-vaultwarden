@@ -1,6 +1,6 @@
 # Podman Compose Setup For Installing Vaultwarden
 
-This configuration creates database and SSL reverse proxy containers for Vaultwarden.
+This configuration creates a database and an SSL reverse proxy container for Vaultwarden.
 
 Detailed info: [Tom's IT Cafe article on https://tomsitcafe.com](https://tomsitcafe.com/2023/12/08/how-to-install-vaultwarden-password-manager-in-podman/)
 
@@ -9,7 +9,7 @@ Detailed info: [Tom's IT Cafe article on https://tomsitcafe.com](https://tomsitc
 - Podman
 - Internet connection
 - A domain name
-- Cert and Key
+- Cert and Key (for the domain)
 - Coffee
 
 ## .env file example
